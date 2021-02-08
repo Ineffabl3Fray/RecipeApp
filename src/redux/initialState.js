@@ -1,3 +1,4 @@
 export default {
-    recipe: []
+    recipe: [],
+    detail: []
 }

@@ -3,9 +3,22 @@ body {
     width: 100%;
     height: 100%;
 }
+.nav{
+    display: flex;
+}
+.navBrand{
+}
+.navBrandLink{
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    font-size: 32px;
+    color: ivory;
+    text-decoration: none;
+}
 .homeSearch{
     display: flex;
-    justify-content: right;
+    justify-content: center;
     width: 100%;
     height: 100%;
     margin-bottom: 1%;
@@ -92,10 +105,15 @@ body {
     height: 31%;
     width: 94%;
 }
+.linkHeader{
+    text-decoration: none;
+    color: rgb(5, 104, 49);
+}
 .description{
     background-color: rgb(241, 232, 232);
     border-radius: 0px 0px 15px 5px;
     border-left: 8px solid rgb(8, 117, 160);
+    color: rgb(29, 31, 30);
     font-size: 17px;
     padding-left: 5%;
     padding-right: 2%;

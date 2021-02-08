@@ -1,10 +1,11 @@
 import React, { useEffect, useContext, useState } from "react";
+import {Link} from 'react-router-dom'
 import { CTX } from "../redux/Store";
 import "./Home.css";
 
 export default function Main() {
 
-  let api = "a8d55ae7c4f2420081aa5fcf8c55b851";
+  const api = "0c969276146e480c8c1dc13535eee91b";
   const [allRecipe, dispatch] = useContext(CTX);
 
   useEffect(() => {
@@ -19,15 +20,22 @@ export default function Main() {
 
   return (
       <div>
-        <div className="homeSearch">
-         <input className="inputStyle" placeholder="Search..." ></input>
-          <button className="searchBtn"> <span> Search </span> </button>
+        <div className="nav">
+            <h1 className="navBrand"><Link className="navBrandLink" to='/'>Recipe App</Link></h1>
+            <div className="homeSearch">
+                <input className="inputStyle" placeholder="Search..." ></input>
+                <button className="searchBtn"> <span> Search </span> </button>
+            </div>
         </div>
+        
         <div className="homeReceipe">
         {allRecipe.recipeReducer ? allRecipe.recipeReducer.recipe ? allRecipe.recipeReducer.recipe.map((data, index) => (
-                <div key={data.id} style={{ backgroundImage: `url( ${data.image ? data.image : altImage}`}} className="main">
+                <div key={data.id} id={data.id} style={{ backgroundImage: `url( ${data.image ? data.image : altImage}`}} className="main">
                     <div id={data.id} className="recipe">
-                    <header className="header">{data.title.substring(0,70).split('').length > 70 ? data.title.substring(0,75) + '...' : data.title.substring(0,75)}</header>
+                    
+                    <header className="header"> 
+                        <Link className="linkHeader" to={`/detail/${data.id}`} params={{data: "data"}}>{data.title.substring(0,70).split('').length > 70 ? data.title.substring(0,75) + '...' : data.title.substring(0,75)}</Link> 
+                    </header>
 
                     <div dangerouslySetInnerHTML={{__html: data.summary.substring(0,110)+'...'}} className="description"></div>
                     </div>
