@@ -1,0 +1,105 @@
+body {
+    background-color: rgb(113, 125, 129);
+    width: 100%;
+    height: 100%;
+}
+.homeSearch{
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1%;
+}
+.inputStyle{
+    margin-top: 1%;
+    height: 35px;
+    width: 13%;
+    min-width: 13%;
+    transition: width 0.4s ease-in-out;
+}
+.inputStyle:focus{
+    width: 25%;
+}
+.searchBtn{
+    margin-top: 1%;
+    margin-left: 0.2%;
+    height: 41px;
+    min-width: 5%;
+    display: inline-block;
+    border-radius: 6px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 13px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.searchBtn span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.searchBtn span::after{
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.searchBtn:hover span{
+    padding-right: 15px;
+}
+.searchBtn:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.homeReceipe{
+    width: 65%;
+    display: flex;
+    flex-flow: row wrap;
+}
+.main{
+    background-size: cover;
+    width: 46%;
+    margin-left: 3%;
+    margin-bottom: 6%;
+    min-height: 330px;
+    height: auto;
+    border-radius: 14px;
+}
+.recipe{
+    background-color: brown;
+    position: relative;
+    border-radius: 5px 15px 15px 5px;
+    height: 40%;
+    min-height: 130px;
+    right: 5%;
+    top: 72%;
+    width: 80%;
+}
+.header{
+    background-color: rgb(241, 232, 232);
+    border-radius: 5px 15px 0px 0px;
+    border-left: 8px solid rgb(8, 117, 160);
+    padding-left: 5%;
+    padding-right: 2%;
+    padding-top: 4%;
+    font-size: 19px;
+    font-weight: bolder;
+    height: 31%;
+    width: 94%;
+}
+.description{
+    background-color: rgb(241, 232, 232);
+    border-radius: 0px 0px 15px 5px;
+    border-left: 8px solid rgb(8, 117, 160);
+    font-size: 17px;
+    padding-left: 5%;
+    padding-right: 2%;
+    padding-top: 3%;
+    height: 56%;
+    width: 94%;
+}

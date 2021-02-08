@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react'
+import Store from './redux/Store'
+import Home from './Home/Home'
 
 function App() {
+  //from to hits-(recipe-(calories healthLabels image ingredients-(text-weight-image) label))
+  //Helpful How To's, Quick Dinner Ideas, Get More Baking Inspiration, More From Well Done
+  let api = '93494a6efe55c26ccdebc7666e7cdcd6'
+  let id = '02a8559a'
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Store>
+        <Home></Home>
+      </Store>
     </div>
   );
 }
