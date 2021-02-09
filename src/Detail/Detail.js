@@ -12,10 +12,11 @@ export default function Detail(props) {
     const api1 = "0c969276146e480c8c1dc13535eee91b";
     const api2 = '886f30c32dc448419381a6f81346307e';
     const api3 = '441c1f481434473e863bc7f089e537dd';
+    const api4 = 'c529d3a0548342cbb71b458dbe8a69cd';
     const [recipe, dispatch] = useContext(CTX);
     
     useEffect(() => {
-        fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${api3}`)
+        fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${api4}`)
         .then((response) => response.json())
         .then((result) =>
             dispatch({ type: "GET_RECIPE_DETAIL", payload: result })

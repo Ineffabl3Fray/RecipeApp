@@ -12,16 +12,18 @@ export default function Main() {
   const api1 = "53667b2c9c94402395e550bc490ae98c";
   const api2 = '886f30c32dc448419381a6f81346307e';
   const api3 = '441c1f481434473e863bc7f089e537dd';
+  const api4 = 'c529d3a0548342cbb71b458dbe8a69cd';
   const [allRecipe, dispatch] = useContext(CTX);
   const [searchValue, setSearchValue] = useState("");
+  let defaultSummary = ` might be just the main course you are searching for. This gluten free recipe...`;
   
   useEffect(() => {
-   fetch(`https://api.spoonacular.com/recipes/random?number=11&apiKey=${api3}`)
+   fetch(`https://api.spoonacular.com/recipes/random?number=11&apiKey=${api4}`)
       .then((response) => response.json())
-      .then((result) =>
-        dispatch({ type: "GET_RECIPE", payload: result.recipes })
+      .then((result) =>{
+        dispatch({ type: "GET_RECIPE", payload: result.recipes })}
       );
-    fetch(`https://api.spoonacular.com/recipes/random?number=3&apiKey=${api3}`)
+    fetch(`https://api.spoonacular.com/recipes/random?number=3&apiKey=${api4}`)
       .then((response) => response.json())
       .then((result) =>
           dispatch({ type: "GET_RANDOM_RECIPE", payload: result.recipes })
@@ -31,11 +33,11 @@ export default function Main() {
   const searchMethod = () => {
     console.log(searchValue)
     
-  fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=11&apiKey=${api3}`)
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=11&apiKey=${api4}`)
       .then((response) => response.json())
       .then((result) =>{
         console.log(result)
-        dispatch({ type: "GET_RECIPE", payload: result.recipes })}
+        dispatch({ type: "GET_RECIPE", payload: result.results })}
       );
     }
 
@@ -56,7 +58,7 @@ export default function Main() {
                     <header className="header"> 
                       <Link className="linkHeader" to={`/detail/${data.id}`}>{data.title.substring(0,70).split('').length > 70 ? data.title.substring(0,75) + '...' : data.title.substring(0,75)}</Link> 
                     </header>
-                    <div dangerouslySetInnerHTML={{__html: data.summary.substring(0,110)+'...'}} className="description"></div>
+                    <div dangerouslySetInnerHTML={{__html: data.summary ? data.summary.substring(0,110)+'...' : data.title + defaultSummary}} className="description"></div>
                   </div>
                 </div>
             )) }
