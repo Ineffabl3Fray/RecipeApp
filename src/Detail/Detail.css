@@ -1,3 +1,160 @@
-.mainDetail{
-    background-color: blue;
+
+#mainDetail{
+    width: 100%;
+    height: 100%;
+}
+#navDetail{
+    position: relative;
+    margin-top: 0%;
+    width: 100%;
+    color: rgb(243, 243, 242);
+}
+#navBrandDetail{
+    background-color: rgb(20, 20, 20);
+    -webkit-box-shadow: 7px 7px 15px 2px #c51f1f;
+    box-shadow: 7px 7px 15px 2px #d82020;
+}
+#navBrandDetail:hover{
+    -webkit-box-shadow: 7px 7px 15px 2px #3310b1;
+    box-shadow: 7px 7px 15px 2px #3310b1;
+    transition: all 0.6s ease-in-out;
+}
+#navBrandLinkDetail{
+    display: flex;
+    align-items: center;
+    background-color: rgb(15, 15, 15);
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(238, 234, 234);
+    cursor: pointer;
+    position: relative;
+    left: 2%;
+    height: 70px;
+    width: auto;
+}
+#navBrandLinkDetail:hover {
+    transition: all 0.5s ease-in-out;
+    color: rgb(201, 15, 15);
+}
+#linkDetailDiv{
+    width: 100%;
+    font-weight: bold;
+    margin-top: 3%;
+}
+#homeLinkDetail{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    left: 3%;
+}
+#homeLinkDetail:hover{
+    transition: all 0.4s ease-in-out;
+    color: rgb(34, 15, 201);
+}
+#arrowSpan{
+    cursor: pointer;
+    position: relative;
+    color: rgb(0, 0, 0);
+    left: 3%;
+    margin: 0% 0.5% 0% 0.5%;
+}
+#detailBody{
+    left: 2%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#detailBody *{
+    position: relative;
+}
+#recipeHeader{
+    color: rgb(0, 0, 0);
+    width: 70%;
+    left: 2%;
+    height: auto;
+    font-size: 55px;
+}
+#recipeDescription{
+    color: rgb(0, 0, 0);
+    width: 70%;
+    height: auto;
+    left: 2%;
+    margin-bottom: 2%;
+    font-size: 20px;
+}
+#mainDescription a{
+    text-decoration: none;
+    color: rgb(0, 3, 151);
+}
+#mainImgDetail{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    left: 4%;
+}
+#imgDetaill{
+    width: 45%;
+    height: 400px;
+}
+#serveTime{
+    width: 20%;
+    height: 140px;
+    background-color: rgb(88, 68, 196);
+    padding-left: 1%;
+    border-radius: 6px;
+    margin-left: 2%;
+}
+#serveTime p{
+    font-size: 19px;
+    color: rgb(255, 255, 255);
+}
+#alarmClock{
+    width: 25%;
+    height: 40px;
+    float: right;
+    right: -11%;
+    margin-top: -7%;
+}
+#h1IngredientsDetail{
+    color: rgb(0, 0, 0);
+    left: 1%;
+}
+#ingredientsDetail{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    left: 1%;
+    width: 70%;
+    margin-top: 0%;
+    font-size: 20px;
+}
+#okSvg{
+    margin: 0% 1.5% 0% 0%;
+    width: 3%;
+}
+#ingredientsDetail #pIngredientsDetail{
+    width: 100%;
+    height: auto;
+    color: rgb(0, 0, 0);
+}
+#h1DirectionsDetail{
+    color: rgb(0, 0, 0);
+    left: 1%;
+}
+#directionsDetail{
+    left: 1%;
+    width: 70%;
+    margin-top: 1%;
+}
+#directionsDetail #pDirectionsDetail{
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+#detailLine{
+    margin-top: 2%;
+    left: 1%;
+    width: 70%;
+    border-bottom: 3px solid rgb(59, 141, 59);
 }

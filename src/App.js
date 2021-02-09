@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {} from 'react'
 import Store from './redux/Store'
 import {Switch, Route} from 'react-router-dom'
 import Home from './Home/Home'

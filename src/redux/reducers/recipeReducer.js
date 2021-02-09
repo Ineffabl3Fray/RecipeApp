@@ -7,10 +7,15 @@ export default function recipeReducer(state = initialState, action) {
                 ...state,
                 recipe: action.payload
             }
-        case 'GET_RECIPE_DETAIL':
+         case 'GET_RECIPE_DETAIL':
             return{
                 ...state,
                 detail: action.payload
+            }
+        case 'GET_RANDOM_RECIPE':
+            return{
+                ...state,
+                random: action.payload
             }
         default:
             return state;
