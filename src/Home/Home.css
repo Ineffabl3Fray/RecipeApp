@@ -88,15 +88,6 @@ body {
 .mainReceipe{
     display: flex;
 }
-.homeReceipe{
-    position: relative;
-    width: 65%;
-    display: flex;
-    float: left;
-    flex-flow: row wrap;
-    margin-left: 1%;
-}
-
 .popularReceipe{
     align-items: center;
     border: 3px solid green;
@@ -110,7 +101,6 @@ body {
     margin: 0% 2% 0% 3%;
     flex-flow: column;
 }
-
 .popularMain{
     background-size: cover;
     width: 70%;
@@ -164,12 +154,21 @@ body {
     width: 94%;
 }
 
+.homeReceipe{
+    position: relative;
+    width: 65%;
+    display: flex;
+    float: left;
+    flex-flow: row wrap;
+    margin-left: 1%;
+}
 .main{
     background-size: cover;
     width: 46%;
     margin-left: 3%;
     margin-bottom: 7%;
     min-height: 330px;
+    max-height: 330px;
     height: auto;
     border-radius: 14px;
 }

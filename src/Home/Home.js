@@ -10,7 +10,7 @@ let arrPagination = [];
 let page = 0;
 let pageCount = 10;
 
-export const api = ["0c969276146e480c8c1dc13535eee91b", "53667b2c9c94402395e550bc490ae98c", '886f30c32dc448419381a6f81346307e', '2719180f54774ace8657df2e69271c33', '441c1f481434473e863bc7f089e537dd', 'c529d3a0548342cbb71b458dbe8a69cd', 'a187cff7c5dc4744b8aba1f594b1c11c', 'f09d13989f1a46bdb84b03efc21dd062', '00efc59416df49ec81c330f69eef7f90', '80ee69d4cf404e6d95d5d59c5e74d938' ]
+export const api = ["0c969276146e480c8c1dc13535eee91b", "53667b2c9c94402395e550bc490ae98c", '886f30c32dc448419381a6f81346307e', '2719180f54774ace8657df2e69271c33', '441c1f481434473e863bc7f089e537dd', 'c529d3a0548342cbb71b458dbe8a69cd', 'a187cff7c5dc4744b8aba1f594b1c11c', 'f09d13989f1a46bdb84b03efc21dd062', '00efc59416df49ec81c330f69eef7f90', '80ee69d4cf404e6d95d5d59c5e74d938', '293414f3af884d058a4a80b47f8e7efb', '525806f229da44eb9b29664bcb04824a', 'fd897d0e21ad4064be0ac1bf67989e5d', 'b95e97ba088a4930aa725bb33a786904', '4843a408cb384f7fb810c120062d2273' ]
 
 export default function Main() {
   let defaultSummary = ` might be just the main course you are searching for. This gluten free recipe...`;
@@ -21,10 +21,19 @@ export default function Main() {
   const [btnBgColor, setbtnBgColor] = useState(1);
   
   const chancePage = (value) => {
-    setbtnBgColor(value + 1)
-    page = value * 10;
-    pageCount = (value * 10) + 10;
-    dispatch({ type: " "})
+    console.log(value)
+    if (value === 11) {
+      setbtnBgColor(1)
+      page = 0;
+      pageCount = 10;
+      getMainRecipe(0);
+    }
+    else{
+      setbtnBgColor(value + 1)
+      page = value * 10;
+      pageCount = (value * 10) + 10;
+      dispatch({ type: " "})
+    }
   }
 
   const getMainRecipe = (count) => {
@@ -58,12 +67,20 @@ export default function Main() {
     );
   }
 
-  const searchMethod = () => {
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=11&apiKey=${api[3]}`)
-      .then((response) => response.json())
-      .then((result) =>{
-        dispatch({ type: "GET_RECIPE", payload: result.results })}
-      );
+  const searchMethod = (count = 0) => {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&number=11&apiKey=${api[count]}`)
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      }
+      else{
+        count = count + 1
+        count < api.length && searchMethod(count)
+      }
+    })
+    .then((result) =>
+        dispatch({ type: "GET_RECIPE", payload: result && result.results ? result.results : "" })
+    );
   }
   
   useEffect(() => {
@@ -100,7 +117,7 @@ export default function Main() {
           </div>
           
           <div className="popularReceipe">
-            <h1>Helpful How To's</h1>
+            <h1 style={{marginLeft: '2%'}}>Helpful How To's</h1>
             {allRecipe.recipeReducer && allRecipe.recipeReducer.random && allRecipe.recipeReducer.random.map((data, index) => index < 3 ? (
                <div key={data.id} id={data.id} style={{ backgroundImage: `url( ${data.image ? data.image : altImage}`}} className="popularMain">
                   <div id={data.id} className="popularRecipe">
@@ -119,7 +136,8 @@ export default function Main() {
             arrPagination.map((i) => (
               <button key={i} style={{backgroundColor: btnBgColor === i && 'rgb(252, 7, 7)'}} className={'pagination'} id={i - 1} onClick={(v) => {chancePage(i - 1)}}>{i}</button>
             ))
-          }
+            
+          }<button className={'pagination'}  onClick={(v) => {chancePage(11)}}>...</button>
         </div>
         <Footer></Footer>
       </div>
