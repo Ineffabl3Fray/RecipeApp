@@ -242,7 +242,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-@media only screen and (max-width: 399px) {
+@media only screen and (max-width: 499px) {
     [class='homeSearch']{
         position: relative;
         display: flex;
@@ -292,7 +292,7 @@ body {
     }
 }
 
-@media only screen and (max-width: 909px) and (min-width: 400px) {
+@media only screen and (max-width: 909px) and (min-width: 500px) {
     [class='homeSearch']{
         position: relative;
         display: flex;
