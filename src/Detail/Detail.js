@@ -1,30 +1,37 @@
 import React, { useContext, useEffect } from "react";
 import {Link} from 'react-router-dom'
 import {CTX} from '../redux/Store'
+import Footer from '../Footer/Footer'
 import './Detail.css'
 import alarmclock from './alarmclock.svg'
 import oksvg from './ok.svg'
 import altImage from '../Home/altPhoto.jpg'
+import {api} from '../Home/Home'
 
 export default function Detail(props) {
     const id = props && props.match && props.match.params && props.match.params.id;
-    const api0 = "0c969276146e480c8c1dc13535eee91b";
-    const api1 = "0c969276146e480c8c1dc13535eee91b";
-    const api2 = '886f30c32dc448419381a6f81346307e';
-    const api3 = '441c1f481434473e863bc7f089e537dd';
-    const api4 = 'c529d3a0548342cbb71b458dbe8a69cd';
     const [recipe, dispatch] = useContext(CTX);
     
-    useEffect(() => {
-        fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${api4}`)
-        .then((response) => response.json())
-        .then((result) =>
-            dispatch({ type: "GET_RECIPE_DETAIL", payload: result })
+    const getDetailRecipe = (count) => {
+        fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${api[count]}`)
+        .then((response) => {
+        if (response.ok) {
+            return response.json()
+        }
+        else{
+            count = count + 1;
+            count < api.length && getDetailRecipe(count);
+        }} )
+        .then((result) =>{
+        dispatch({ type: "GET_RECIPE_DETAIL", payload: result ? result : "" })}
         );
+    }
+
+    useEffect(() => {
+        getDetailRecipe(0)
     },[])
 
     const detailRecipe = recipe && recipe.recipeReducer && recipe.recipeReducer.detail
-    console.log(detailRecipe)
     
     return (
         <div id='mainDetail'>
@@ -55,8 +62,8 @@ export default function Detail(props) {
                 <div id='detailLine'></div>
                 <h1 id='h1IngredientsDetail'>Ingredients</h1>
 
-                {detailRecipe && detailRecipe.extendedIngredients && detailRecipe.extendedIngredients.map(value => (
-                    <div id='ingredientsDetail'>
+                {detailRecipe && detailRecipe.extendedIngredients && detailRecipe.extendedIngredients.map((value, i) => (
+                    <div key={i} id='ingredientsDetail'>
                             <img id='okSvg' src={oksvg} alt='a'/>
                             <p id='pIngredientsDetail'> {value.original} </p>
                     </div> 
@@ -66,7 +73,7 @@ export default function Detail(props) {
                 <h1 id='h1DirectionsDetail'>Directions</h1>
                 <div id='directionsDetail'> <p id='pDirectionsDetail' dangerouslySetInnerHTML={{__html: detailRecipe && detailRecipe.instructions && detailRecipe.instructions}}></p> </div>
             </div>
-         
+         <Footer></Footer>
         </div>
     );
 }

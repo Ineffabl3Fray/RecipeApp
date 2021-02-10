@@ -18,6 +18,6 @@ export default function recipeReducer(state = initialState, action) {
                 random: action.payload
             }
         default:
-            return state;
+            return {...state};
     }
 }
